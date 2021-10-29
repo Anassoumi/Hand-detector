@@ -1,0 +1,26 @@
+import cv2
+import mediapipe as mp
+import time
+
+path = cv2.VideoCapture(0)
+
+mphands = mp.solutions.hands
+hands = Hands.Hands()
+mpDraw = mp.solutions.drawing_utils
+Ptime =0
+Ctime = 0
+
+while True:
+    success, img = path.read()
+    imgRGB = cv2.cvtColor(cv2.COLOR_BGR2RGB)
+    results = hands.process(imgRGB)
+    print(results.multi_hands_landmark)
+    if results.multi_hands_landmark:
+        for i in results.multi_hands_landmark:
+            mp.Draw.draw_landmarks(img, i, mphands.HAND_CONNECTIONS)
+    Ctime=time.time()
+    Ptime=1/Ctime-Ptim
+    ]
+
+    cv2.waitKey(1)
+
